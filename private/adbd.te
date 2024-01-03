@@ -222,8 +222,7 @@ allow adbd shell_test_data_file:lnk_file create_file_perms;
 ###
 
 # No transitions from adbd to non-shell, non-crash_dump domains. adbd only ever
-# transitions to the shell or tradeinmode domain (except when it crashes). In
-# particular, we never want to see a transition from adbd to su (aka "adb root")
+# transitions to the shell domain (except when it crashes).
 neverallow adbd { domain -crash_dump -shell -adbd_tradeinmode }:process transition;
 neverallow adbd {
     domain
